@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Score Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Custom Notification Toast -->
+    <div id="toastNotification" class="toast">
+        <span class="toast-icon">🎵</span>
+        <div class="toast-content">
+            <div class="toast-title">MUSIC UPDATED</div>
+            <div class="toast-message" id="toastMessage">Song changed successfully.</div>
+        </div>
+    </div>
+
+    <div class="ambient-glow glow-left"></div>
+    <div class="ambient-glow glow-right"></div>
+    
+    <div class="decorations">
+        <div class="grid-line grid-v"></div>
+    </div>
+
+    <!-- 🎵 Now Playing Widget -->
+    <div class="music-widget" id="musicWidget">
+        <div class="music-visualizer">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="music-info">
+            <span class="music-info-label">NOW PLAYING</span>
+            <span class="music-title">VICTORY</span>
+        </div>
+        <button class="music-stop-btn" onclick="stopMusic()" title="Stop Music">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><rect x="4" y="4" width="16" height="16" rx="2"/></svg>
+        </button>
+    </div>
+
+    <div class="scoreboard-container">
+        <!-- Team A (Left) -->
+        <div class="team-card team-a">
+            <div class="name-wrapper">
+                <h2 class="player-name" id="nameA" contenteditable="true" spellcheck="false" placeholder="이름 입력해주세요..." onblur="saveName('A')" onkeydown="handleNameKey(event, 'A')">이름 입력해주세요...</h2>
+                <span class="edit-hint">✏️</span>
+            </div>
+            
+            <div class="wins-row">
+                <div class="wins-badge" id="winsAContainer">
+                    <span class="trophy-emoji">🏆</span>
+                    <span id="winsA">0</span>
+                </div>
+                <button class="change-song-btn-card" onclick="triggerFilePicker('A')" title="Change Victory Song">🎵 SONG</button>
+            </div>
+            
+            <div class="score-container">
+                <div class="score-display" id="scoreA">0</div>
+            </div>
+            
+            <div class="controls-section">
+                <!-- Score Group -->
+                <div class="control-group">
+                    <span class="control-label">SCORE</span>
+                    <div class="btn-pair">
+                        <button class="btn btn-primary" onclick="increaseScore('A')" title="Increase Score">😁 +1</button>
+                        <button class="btn btn-secondary" onclick="decreaseScore('A')" title="Decrease Score">😭 -1</button>
+                    </div>
+                </div>
+                <!-- Wins Group -->
+                <div class="control-group">
+                    <span class="control-label">WINS</span>
+                    <div class="btn-pair">
+                        <button class="btn btn-win-primary" onclick="increaseWins('A')" title="Increase Wins">🏆 +1</button>
+                        <button class="btn btn-win-secondary" onclick="decreaseWins('A')" title="Decrease Wins">🏆 -1</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Controls -->
+        <div class="center-controls">
+            <button class="reset-btn" onclick="resetScores()">RESET</button>
+            <input type="file" id="audioFilePicker" accept="audio/*" style="display: none;" onchange="handleAudioUpload(event)">
+        </div>
+
+        <!-- Team B (Right) -->
+        <div class="team-card team-b">
+            <div class="name-wrapper">
+                <h2 class="player-name" id="nameB" contenteditable="true" spellcheck="false" placeholder="이름 입력해주세요..." onblur="saveName('B')" onkeydown="handleNameKey(event, 'B')">이름 입력해주세요...</h2>
+                <span class="edit-hint">✏️</span>
+            </div>
+            
+            <div class="wins-row">
+                <div class="wins-badge" id="winsBContainer">
+                    <span class="trophy-emoji">🏆</span>
+                    <span id="winsB">0</span>
+                </div>
+                <button class="change-song-btn-card" onclick="triggerFilePicker('B')" title="Change Victory Song">🎵 SONG</button>
+            </div>
+            
+            <div class="score-container">
+                <div class="score-display" id="scoreB">0</div>
+            </div>
+            
+            <div class="controls-section">
+                <!-- Score Group -->
+                <div class="control-group">
+                    <span class="control-label">SCORE</span>
+                    <div class="btn-pair">
+                        <button class="btn btn-primary" onclick="increaseScore('B')" title="Increase Score">😁 +1</button>
+                        <button class="btn btn-secondary" onclick="decreaseScore('B')" title="Decrease Score">😭 -1</button>
+                    </div>
+                </div>
+                <!-- Wins Group -->
+                <div class="control-group">
+                    <span class="control-label">WINS</span>
+                    <div class="btn-pair">
+                        <button class="btn btn-win-primary" onclick="increaseWins('B')" title="Increase Wins">🏆 +1</button>
+                        <button class="btn btn-win-secondary" onclick="decreaseWins('B')" title="Decrease Wins">🏆 -1</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sponsor Logo -->
+    <div class="brand-container">
+        <img src="HoundsCorporation.png" alt="Hounds Corporation Logo">
+    </div>
+
+    <!-- Audio Element -->
+    <audio id="trophySound" preload="auto">
+        <source src="VICTORY.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
