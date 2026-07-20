@@ -1,10 +1,10 @@
-# 🎮 Weekend-ScoreBoard (주말 보드게임 점수판)
+# 🎮 Weekend-ScoreBoard (보드게임 점수판)
 
 > 여자친구와 보드게임할 때 사용하려고 취미로 가볍게 만든 프리미엄 네온 테마 디지털 점수판 (Vanilla HTML, CSS, Javascript)
 
 Weekend-ScoreBoard는 여자친구와 보드게임할 때 쓰려고 가볍게 제작한 점수판입니다. 플레이어 이름을 직접 수정해서 사용할 수 있고(새로고침해도 이름과 세트 스코어가 유지됩니다), 세트 승리 시 재생되는 축하 음악을 각자 원하는 곡으로 등록해서 사용할 수 있습니다.
 
-![대시보드 메인 화면](assets/screenshot.png)
+![대시보드 메인 화면](assets/readme/screenshot.png)
 
 
 
