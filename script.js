@@ -65,16 +65,16 @@ async function loadVictorySongSources() {
             // Revert to default VICTORY.mp3 if localStorage was cleared
             const blob = storedTitle ? await loadAudioBlob(team) : null;
             if (blob) {
-                if (objectUrls[team] && objectUrls[team] !== "VICTORY.mp3") {
+                if (objectUrls[team] && objectUrls[team] !== "assets/VICTORY.mp3") {
                     URL.revokeObjectURL(objectUrls[team]);
                 }
                 objectUrls[team] = URL.createObjectURL(blob);
             } else {
-                objectUrls[team] = "VICTORY.mp3";
+                objectUrls[team] = "assets/VICTORY.mp3";
             }
         } catch (err) {
             console.error(`Failed to load song for Team ${team}:`, err);
-            objectUrls[team] = "VICTORY.mp3";
+            objectUrls[team] = "assets/VICTORY.mp3";
         }
     }
 }
@@ -177,7 +177,7 @@ function increaseWins(team) {
 
     // Set source and load
     audio.volume = 1.0;
-    audio.src = objectUrls[team] || "VICTORY.mp3";
+    audio.src = objectUrls[team] || "assets/VICTORY.mp3";
     audio.currentTime = 0;
     
     // Update music widget UI title
